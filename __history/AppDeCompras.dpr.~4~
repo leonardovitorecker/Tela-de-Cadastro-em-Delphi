@@ -1,0 +1,18 @@
+program AppDeCompras;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Cadastro in 'Cadastro.pas' {FrmCadastro},
+  DM in 'DM.pas' {db},
+  Login in 'Login.pas' {Form8};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TFrmCadastro, FrmCadastro);
+  Application.CreateForm(Tdb, db);
+  Application.CreateForm(TForm8, Form8);
+  Application.Run;
+end.

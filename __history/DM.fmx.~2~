@@ -1,0 +1,25 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  Caption = 'ConectBanco'
+  ClientHeight = 480
+  ClientWidth = 320
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from pessoa')
+    Left = 152
+    Top = 40
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=C:\Users\LEONARDO\Documents\sqlexpert\banco.db'
+      'DriverID=SQLite')
+    Left = 49
+    Top = 38
+  end
+end
