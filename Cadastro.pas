@@ -27,6 +27,7 @@ type
     Image2: TImage;
     Label4: TLabel;
     procedure RoundReactConfirmarClick(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,11 +43,17 @@ implementation
 
 {$R *.fmx}
 
-uses DM,Login;
+uses DM,Login,unit1;
 
 
 
 
+
+procedure TFrmCadastro.Image2Click(Sender: TObject);
+begin
+   Form1.Showmodal;
+   FrmCadastro.close;
+end;
 
 procedure TFrmCadastro.RoundReactConfirmarClick(Sender: TObject);
 var senha:string;

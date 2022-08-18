@@ -26,6 +26,8 @@ type
     Image2: TImage;
     Label5: TLabel;
     procedure RoundRect1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -43,25 +45,38 @@ uses DM, Unit1;
 
 {$R *.fmx}
 
-procedure TForm8.RoundRect1Click(Sender: TObject);
+procedure TForm8.Image2Click(Sender: TObject);
+begin
+  Form1.Showmodal;
+  Form8.close;
+end;
 
+
+procedure TForm8.RoundRect1Click(Sender: TObject);
+var
+sql:String;
+begin
+   sql := 'select count(1) from pessoa ' +
+  ' where usuario = ' + (EditUsuario.Text) +
+  ' and senha = ' + SHA1(EditSenha.Text)   ;
 begin
 Db.FDQuery1.Close;
-Db.FDQuery1.Open();
-if(EditUsuario.Text=db.FDQuery1.FieldByName('usuario').AsString) then
-if(SHA1(EditSenha.Text) =db.FDQuery1.FieldByName('senha').AsString) then
- begin
+Db.FDQuery1.Open;
+if Db.FDQuery1.Locate('usuario', EditUsuario.Text) and
+   Db.FDQuery1.Locate('senha', SHA1(EditUsuario.Text)) then
+  begin
+  Showmessage('bem vindo ao sistema');
   Form1.Showmodal;
-  Form8.Hide;
   Form8.close;
   abort;
- end
+end
 else
 abort;
  Showmessage('nome ou senha incorretos');
  editSenha.Text:='';
  editUsuario.Text:='';
  editUsuario.SetFocus;
+ end;
  end;
  function TForm8.SHA1(AsString: string) : string;
 var

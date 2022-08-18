@@ -15,6 +15,7 @@ type
     Image1: TImage;
     Image2: TImage;
     Label4: TLabel;
+    procedure Image2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -26,6 +27,13 @@ var
 
 implementation
 
+uses unit4;
 {$R *.fmx}
+
+procedure TForm3.Image2Click(Sender: TObject);
+begin
+ Form4.Showmodal;
+  Form3.close;
+end;
 
 end.
