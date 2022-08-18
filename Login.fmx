@@ -918,6 +918,7 @@ object Form8: TForm8
       Size.Width = 57.000000000000000000
       Size.Height = 50.000000000000000000
       Size.PlatformDefault = False
+      OnClick = Image2Click
     end
     object Label5: TLabel
       Align = Left
