@@ -1,0 +1,47 @@
+unit produto;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.Edit;
+
+type
+  TForm5 = class(TForm)
+    Layout1: TLayout;
+    ToolBar1: TToolBar;
+    Layout2: TLayout;
+    Layout3: TLayout;
+    EditValor: TEdit;
+    EditQuantidade: TEdit;
+    EditDescricao: TEdit;
+    EditNome: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    RoundRect1: TRoundRect;
+    Image1: TImage;
+    Label5: TLabel;
+    Label6: TLabel;
+    Image2: TImage;
+    Label7: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form5: TForm5;
+
+implementation
+
+{$R *.fmx}
+
+
+
+
+
+end.

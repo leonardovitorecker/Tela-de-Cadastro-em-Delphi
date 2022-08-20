@@ -8,37 +8,30 @@ object db: Tdb
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
-  object FDQuery1: TFDQuery
+  object FDPessoa: TFDQuery
     Connection = FDConnection1
     SQL.Strings = (
-      'select * from pessoa')
+      'select * from pessoa'
+      'where enail =:pNome')
     Left = 152
     Top = 40
-    object FDQuery1id: TFDAutoIncField
+    ParamData = <
+      item
+        Name = 'PNOME'
+        DataType = ftString
+        ParamType = ptInput
+        Value = ''
+      end>
+    object FDPessoaid: TFDAutoIncField
       FieldName = 'id'
-      Origin = 'id'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
     end
-    object FDQuery1nome: TStringField
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 50
+    object FDPessoaenail: TStringField
+      FieldName = 'enail'
+      Size = 60
     end
-    object FDQuery1usuario: TStringField
-      FieldName = 'usuario'
-      Origin = 'usuario'
-      Size = 50
-    end
-    object FDQuery1senha: TStringField
+    object FDPessoasenha: TStringField
       FieldName = 'senha'
-      Origin = 'senha'
-      Size = 10
-    end
-    object FDQuery1telefone: TStringField
-      FieldName = 'telefone'
-      Origin = 'telefone'
-      Size = 15
+      Size = 40
     end
   end
   object FDConnection1: TFDConnection
@@ -47,7 +40,47 @@ object db: Tdb
       'LockingMode=Normal'
       'DriverID=SQLite')
     Connected = True
+    LoginPrompt = False
+    AfterConnect = FDConnection1AfterConnect
+    BeforeConnect = FDConnection1BeforeConnect
     Left = 49
-    Top = 38
+    Top = 46
+  end
+  object FDProduto: TFDQuery
+    Active = True
+    Connection = FDConnection1
+    SQL.Strings = (
+      'select * from produto')
+    Left = 56
+    Top = 128
+    object FDProdutoid: TFDAutoIncField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object FDProdutonome: TStringField
+      FieldName = 'nome'
+      Origin = 'nome'
+    end
+    object FDProdutodescricao: TStringField
+      FieldName = 'descricao'
+      Origin = 'descricao'
+      Size = 200
+    end
+    object FDProdutovalor: TBCDField
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 14
+      Size = 2
+    end
+    object FDProdutoquantidade: TIntegerField
+      FieldName = 'quantidade'
+      Origin = 'quantidade'
+    end
+    object FDProdutoimg_produto: TBlobField
+      FieldName = 'img_produto'
+      Origin = 'img_produto'
+    end
   end
 end

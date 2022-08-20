@@ -41,7 +41,7 @@ var
 
 implementation
 
-uses DM, Unit1;
+uses DM, Unit1,PesquisaProduto;
 
 {$R *.fmx}
 
@@ -55,29 +55,27 @@ end;
 procedure TForm8.RoundRect1Click(Sender: TObject);
 var
 sql:String;
+var
+senha:string;
 begin
-   sql := 'select count(1) from pessoa ' +
-  ' where usuario = ' + (EditUsuario.Text) +
-  ' and senha = ' + SHA1(EditSenha.Text)   ;
+senha :=  SHA1(Editsenha.Text);
+db.FDPessoa.Close;
+db.FDPessoa.ParamByName('pNome').AsString :=EditUsuario.Text;
+db.FDPessoa.Open();
+if not (db.FDPessoa.IsEmpty) and (db.FDPessoasenha.AsString = senha) then
 begin
-Db.FDQuery1.Close;
-Db.FDQuery1.Open;
-if Db.FDQuery1.Locate('usuario', EditUsuario.Text) and
-   Db.FDQuery1.Locate('senha', SHA1(EditUsuario.Text)) then
-  begin
-  Showmessage('bem vindo ao sistema');
-  Form1.Showmodal;
-  Form8.close;
-  abort;
+  if not Assigned(Form6) then
+  Application.CreateForm(Tform6,Form6);
+  Form6.Show;
+   Showmessage('bem vindo ao sistema');
 end
 else
+begin
 abort;
  Showmessage('nome ou senha incorretos');
- editSenha.Text:='';
- editUsuario.Text:='';
- editUsuario.SetFocus;
+end;
  end;
- end;
+
  function TForm8.SHA1(AsString: string) : string;
 var
 senhaSHA1:TIDhAsHsha1;

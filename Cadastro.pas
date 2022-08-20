@@ -26,6 +26,7 @@ type
     EditSenha: TEdit;
     Image2: TImage;
     Label4: TLabel;
+    Image3: TImage;
     procedure RoundReactConfirmarClick(Sender: TObject);
     procedure Image2Click(Sender: TObject);
   private
@@ -58,17 +59,16 @@ end;
 procedure TFrmCadastro.RoundReactConfirmarClick(Sender: TObject);
 var senha:string;
 begin
-Db.FDQuery1.Close;
-Db.FDQuery1.Open();
+
 
 
 if(EditUsuario.Text = EmptyStr) or (EditSenha.Text = EmptyStr) then
 Abort;
-Db.FDQuery1.Append;
-Db.FDQuery1usuario.AsString:=EditUsuario.Text;
-Db.FDQuery1senha.AsString:= SHA1(EditSenha.Text);
-Db.FDQuery1.Post;
-Db.FDConnection1.CommitRetaining;
+db.FDPessoa.Append;
+db.FDPessoaenail.AsString:=EditUsuario.Text;
+db.FDPessoasenha.AsString:= SHA1(EditSenha.Text);
+db.FDPessoa.Post;
+db.FDConnection1.CommitRetaining;
     FrmCadastro.Hide;
 
   Form8.Showmodal;
